@@ -10,10 +10,10 @@ import net.javaguides.springboot.websocket.model.Greeting;
 import net.javaguides.springboot.websocket.model.HelloMessage;
 
 @Controller
+@CrossOrigin("*")
 public class GreetingController {
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
-    @CrossOrigin
     public Greeting greeting(HelloMessage message) throws Exception {
         Thread.sleep(1000); // simulated delay
         return new Greeting("MUDEI, " + HtmlUtils.htmlEscape(message.getName()) + "!");
